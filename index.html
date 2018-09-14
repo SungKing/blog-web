@@ -40,7 +40,7 @@
 
         <div class="am-collapse am-topbar-collapse" id="blog-collapse">
             <ul class="am-nav am-nav-pills am-topbar-nav">
-                <li class="am-active"><a href="lw-index.html">首页</a></li>
+                <li class="am-active"><a id='my_home' style="cursor: pointer">首页</a></li>
                 <!--<li class="am-dropdown" data-am-dropdown>
         <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
           首页布局 <span class="am-icon-caret-down"></span>
@@ -53,9 +53,9 @@
         </ul>
       </li>-->
                 <li><a id="article" style="cursor: pointer">文章</a></li>
-                <li><a href="lw-img.html">图片</a></li>
-                <li><a href="lw-article-fullwidth.html">具体文章示例</a></li>
-                <li><a href="lw-timeline.html">我做了啥</a></li>
+                <li><a id="my_img" style="cursor: pointer">图片</a></li>
+                <li><a id='full_article' style="cursor: pointer">具体文章示例</a></li>
+                <li><a id='time_line' style="cursor: pointer">我做了啥</a></li>
             </ul>
             <!--<form class="am-topbar-form am-topbar-right am-form-inline" role="search">
       <div class="am-form-group">
@@ -116,12 +116,42 @@
 <script src="js/amazeui.ie8polyfill.min.js"></script>
 <![endif]-->
     <script src="js/amazeui.min.js"></script>
+    <script src="js/pinto.min.js"></script>
     <script>
         $(function(){
             $('#content').load('home.html');
             $('#article').on('click',function(){
                 $('#content').empty();
                 $('#content').load('article.html');
+            })
+            //my_img
+            $('#my_img').on('click',function(){
+                $('#content').empty();
+                $('#content').load('image.html');
+            })
+            //full_article
+            $('#full_article').on('click',function(){
+                $('#content').empty();
+                $('#content').load('article_width.html');
+            })
+            //time_line
+            $('#time_line').on('click',function(){
+                
+                $('#content').empty();
+                try{
+                    $('#content').load('timeline.html');   
+                }catch(err){
+                    console.log(err)
+                }finally{
+                    $('#content').pinto();
+                }
+                
+                
+            })
+            //my_home
+            $('#my_home').on('click',function(){
+                $('#content').empty();
+                $('#content').load('home.html');
             })
         })
     </script>

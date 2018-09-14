@@ -433,7 +433,8 @@ h1 span{
     width:99%;
     height:98%;
     border:0.3rem solid #fff;
-    padding:3rem 8rem;
+    /*padding:3rem 8rem;*/
+    padding:5% 10%;
     background-color:#fff;
 }
 /**
