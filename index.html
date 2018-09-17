@@ -53,7 +53,7 @@
         </ul>
       </li>-->
                 <li><a id="article" style="cursor: pointer">文章</a></li>
-                <!--<li><a id="my_img" style="cursor: pointer">图片</a></li>-->
+                <li><a id="my_img" style="cursor: pointer">图片</a></li>
                 <li><a id='full_article' style="cursor: pointer">具体文章示例</a></li>
                 <li><a id='time_line' style="cursor: pointer">我做了啥</a></li>
             </ul>
@@ -130,7 +130,7 @@
             $('#my_img').on('click',function(){
                 $('#content').empty();
                 $('#content').load('image.html');
-               // $('#content').pinto();
+               
                 resetBtn();
                 $(this).css('color','#10D07A');
             })
