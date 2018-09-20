@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>写日志</title>
+    <link rel="stylesheet" href="css/amazeui.min.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<style>
+    form {
+        align-content: center;
+        align-items: center;
+        
+    }
+    form .title{
+        width: 100%;
+        height: 100px;
+        text-align: center
+    }
+
+</style>
+
+<body>
+    <header class="am-g am-g-fixed blog-fixed blog-text-center blog-header">
+        <div class="am-u-sm-8 am-u-sm-centered">
+            <p>hahahahahahah</p>
+            <h2 class="am-hide-sm-only">快点记录生活吧！</h2>
+        </div>
+    </header>
+    <hr>
+    <div class="am-article-bd">
+        <form method="POST" action="#">
+            <input name="title" placeholder="文章标题" class="title"><br />
+            <hr>
+            <input name="tag" placeholder="标签" /><br />
+            <hr>
+            <textarea style="display:none" name="content"></textarea>
+            <div id="editor">
+                <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+            </div>
+            <div>
+                <button id="b1">获取html</button>
+                <button id="b2">获取text</button>
+            </div>
+        </form>
+    </div>
+
+
+
+
+
+
+    <!-- 注意， 只需要引用 JS，无需引用任何 CSS ！！！-->
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/wangEditor.min.js"></script>
+    <script type="text/javascript">
+        var E = window.wangEditor
+        var editor = new E('#editor')
+        // 或者 var editor = new E( document.getElementById('editor') )
+        //上传图片到服务器
+        editor.customConfig.uploadImgServer = '/cms/upload'
+        //一次只能上传一张图片
+        editor.customConfig.uploadImgMaxLength = 1
+        //上传文件的名字
+        editor.customConfig.uploadFileName = "images"
+        //跨域上传中如果需要传递 cookie 需设置 withCredentials
+        editor.customConfig.withCredentials = true
+        editor.create()
+        $("#b1").on('click', function () {
+            alert(editor.txt.html())
+        })
+        $("#b2").on('click', function () {
+            alert(editor.txt.text())
+        })
+
+    </script>
+</body>
+
+</html>
