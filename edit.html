@@ -8,14 +8,24 @@
     <link rel="stylesheet" href="css/app.css">
 </head>
 <style>
+    html,body{
+        background-color: RGB(242,235,217)
+    }
     form {
         align-content: center;
         align-items: center;
+        margin: 5% 10%;
         
     }
     form .title{
         width: 100%;
         height: 100px;
+        text-align: center
+    }
+
+    form [name='summary']{
+        width: 100%;
+        height: 4em;
         text-align: center
     }
 
@@ -33,15 +43,15 @@
         <form method="POST" action="#">
             <input name="title" placeholder="文章标题" class="title"><br />
             <hr>
-            <input name="tag" placeholder="标签" /><br />
+            <center><input type="checkbox" name="tag" value="1" />生活<br /></center>
+            <center><input name="summary" placeholder="概述"/><br /></center>
             <hr>
-            <textarea style="display:none" name="content"></textarea>
+            <textarea style="display:none" name="content" id="texta"></textarea>
             <div id="editor">
                 <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
             </div>
             <div>
-                <button id="b1">获取html</button>
-                <button id="b2">获取text</button>
+                <input type="submit" id="sub"/>
             </div>
         </form>
     </div>
@@ -66,13 +76,22 @@
         editor.customConfig.uploadFileName = "images"
         //跨域上传中如果需要传递 cookie 需设置 withCredentials
         editor.customConfig.withCredentials = true
+
+        editor.customConfig.onchange = function (html) {
+            // 监控变化，同步更新到 textarea
+            console.log(html)
+            $("#texta").val(html)
+        }
+        
         editor.create()
-        $("#b1").on('click', function () {
-            alert(editor.txt.html())
-        })
-        $("#b2").on('click', function () {
-            alert(editor.txt.text())
-        })
+        // 初始化 textarea 的值
+        $("#texta").val(editor.txt.html())
+        // $("#b1").on('click', function () {
+        //     alert(editor.txt.html())
+        // })
+        // $("#b2").on('click', function () {
+        //     alert(editor.txt.text())
+        // })
 
     </script>
 </body>
